@@ -31,3 +31,7 @@ Activate your virtual environment
  ```shell
 source .venv/bin/activate
 ```
+Clone repository from a URL
+```shell
+git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
+```
