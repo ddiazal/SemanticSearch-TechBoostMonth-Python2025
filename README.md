@@ -1,6 +1,7 @@
 # Semantic Search with Embeddings
 ## But, what is semantic search?
 ![Semantic Search Illustration](images/semanticSearch_metaImg.jpg)
+
 Semantic search is a `search technique that aims to understand the meaning and context of a user's query`, going beyond simple keyword matching to deliver more relevant results. It uses natural language processing (NLP) and machine learning (ML) to interpret the user's intent and provide results that align with their actual needs. 
 
 ## How does semantic search work?
