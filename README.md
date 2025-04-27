@@ -10,7 +10,7 @@ Semantic search engines employ various techniques from natural language processi
 * **Content analysis**: Similar to how a search engine analyzes queries, it also examines the content of web pages to determine their relevance to a particular search. This analysis goes beyond keyword matching and considers factors such as the overall topic, sentiment, and entities mentioned within the content.
 * **Result return and retrieval**: Based on the analysis of the query and the content, the search engine could return  web pages according to their relevance and semantic similarity to the search query. It then retrieves and displays the most relevant results to the user.
 
-## And... What in the hec are embeddings?
+## And... What the hec are embeddings?
 Embeddings are `numerical representations of data`, particularly text, images, or audio, that capture semantic relationships and allow machine learning models to understand and process complex information. They transform these inputs into vectors, which are then used to identify similarities and relationships between different pieces of data. 
 
 ### How they work:
