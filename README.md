@@ -1,4 +1,5 @@
 # Semantic Search with Embeddings
+![Semantic Search Illustration](images/semanticSearch_metaImg.jpg)
 ## But, what is semantic search?
 Semantic search is a `search technique that aims to understand the meaning and context of a user's query`, going beyond simple keyword matching to deliver more relevant results. It uses natural language processing (NLP) and machine learning (ML) to interpret the user's intent and provide results that align with their actual needs. 
 
@@ -27,7 +28,7 @@ Clone repository from a URL
 ```shell
 git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
 ```
-Now, create a python virtual environment:
+Now, create a python virtual environment inside the repository directory:
 ```shell
 cd SemanticSearch-TechBoostMonth-Python2025
 python3 -m venv .venv
