@@ -29,6 +29,7 @@ git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.gi
 ```
 Now, create a python virtual environment:
 ```shell
+cd SemanticSearch-TechBoostMonth-Python2025
 python3 -m venv .venv
 ```
 Activate your virtual environment
