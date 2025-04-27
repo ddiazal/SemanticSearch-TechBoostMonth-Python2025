@@ -23,6 +23,10 @@ Embeddings are `numerical representations of data`, particularly text, images, o
 mkdir project-semantic_search_w_embeddings
 cd project-semantic_search_w_embeddings
 ```
+Clone repository from a URL
+```shell
+git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
+```
 Now, create a python virtual environment:
 ```shell
 python3 -m venv .venv
@@ -31,7 +35,8 @@ Activate your virtual environment
  ```shell
 source .venv/bin/activate
 ```
-Clone repository from a URL
+Now, install all requirements so that you can run the scripts smoothly:
 ```shell
-git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
