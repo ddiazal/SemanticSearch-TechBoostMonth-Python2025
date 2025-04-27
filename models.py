@@ -22,6 +22,16 @@ class SemanticSearch:
         self.dataframe = None
 
     def __call__(self, data_file:str, query:str, file_type: str = "csv")->list[Any]:
+        """_summary_
+
+        Args:
+            data_file (str): _description_
+            query (str): _description_
+            file_type (str, optional): _description_. Defaults to "csv".
+
+        Returns:
+            list[Any]: _description_
+        """
         if file_type == "csv":
             self.dataframe: DataFrame = read_csv(data_file)
             data = self._fetch_into_json()
@@ -45,6 +55,11 @@ class SemanticSearch:
 
 
     def _fetch_into_json(self) -> list[dict[str, Any]]:
+        """_summary_
+
+        Returns:
+            list[dict[str, Any]]: _description_
+        """
         json_data = self.dataframe.to_json(orient='records')
         data:list[dict[str, Any]] = json.loads(json_data)
         return data
@@ -52,9 +67,16 @@ class SemanticSearch:
 
     @staticmethod
     def create_data_texts(data_dict: dict[str, Any]) -> str:
-        (title,
-         short_description,
-         features) = itemgetter(
+        """_summary_
+
+        Returns:
+            string: _description_
+        """
+        (
+            title,
+            short_description,
+            features
+        ) = itemgetter(
             'title',
             'short_description',
             'features')(data_dict)
@@ -64,6 +86,14 @@ class SemanticSearch:
 
 
     def create_embedding(self, texts: list | str)->list[Any]:
+        """_summary_
+
+        Args:
+            texts (list | str): _description_
+
+        Returns:
+            list[Any]: _description_
+        """
         response = self.__client.embeddings.create(
             model="text-embedding-3-small"
             ,input=texts
@@ -74,6 +104,16 @@ class SemanticSearch:
 
     @staticmethod
     def find_closest_n(query_vector: list[float], embeddings: list[float], n:int)->list[dict[str, Any]]:
+        """_summary_
+
+        Args:
+            query_vector (list[float]): _description_
+            embeddings (list[float]): _description_
+            n (int): _description_
+
+        Returns:
+            list[dict[str, Any]]: _description_
+        """
         distances: list[dict[str, Any]] = []
         for index, embedding in enumerate(embeddings):
             # Calculate the cosine distance between the query vector and embedding
