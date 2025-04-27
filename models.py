@@ -67,10 +67,13 @@ class SemanticSearch:
 
     @staticmethod
     def create_data_texts(data_dict: dict[str, Any]) -> str:
-        """_summary_
+        """
+
+        Args:
+            data_dict (dict[str, Any]): _description_
 
         Returns:
-            string: _description_
+            str: _description_
         """
         (
             title,
