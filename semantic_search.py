@@ -43,20 +43,25 @@ class SemanticSearch:
             with open(data_file) as f:
                 data = json.load(f)
 
+        # Get data related texts
         data_texts: list[str] = [self.create_data_texts(data_dict=d) for d in data]
+        # Generate data embeddings
         data_embeddings: list[float] = self.create_embedding(texts=data_texts)
-
+        # Generate query embeddings
         query_embeddings: list[float] = self.create_embedding(texts=query)[0]
 
+        # Get top n query responses
         hits = self.find_closest_n(
             query_vector=query_embeddings, embeddings=data_embeddings, n=3
         )
         sem_search: list = []
         print(f'Search results for "{query}"')
+        # Iterate over query responses
         for hit in hits:
             product = data[hit["index"]]
             sem_search.append(product["title"])
 
+        # Return semantic search response
         return sem_search
 
 
