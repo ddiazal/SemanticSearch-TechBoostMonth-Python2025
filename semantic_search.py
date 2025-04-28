@@ -16,21 +16,25 @@ emb_client = OpenAI(
     api_key=SECRET_KEY,
 )
 
+# Create semantic search class
 class SemanticSearch:
     def __init__(self, client = emb_client):
+        # Class attributes
         self.__client = client
         self.dataframe = None
 
     def __call__(self, data_file:str, query:str, file_type: str = "csv")->list[Any]:
-        """_summary_
+        """Special method that allows instances of a class to be called like regular functions.
+        This enables objects to behave like functions, providing a flexible way to encapsulate
+        functionality.
 
         Args:
-            data_file (str): _description_
-            query (str): _description_
-            file_type (str, optional): _description_. Defaults to "csv".
+            data_file (str): Data to query over.
+            query (str): User query string.
+            file_type (str, optional): File extension. Defaults to "csv".
 
         Returns:
-            list[Any]: _description_
+            list[Any]: Semantic search results.
         """
         if file_type == "csv":
             self.dataframe: DataFrame = read_csv(data_file)
@@ -40,11 +44,13 @@ class SemanticSearch:
                 data = json.load(f)
 
         data_texts: list[str] = [self.create_data_texts(data_dict=d) for d in data]
-        data_embeddings: list[float] = self.create_embedding(texts=data_texts)[0]
+        data_embeddings: list[float] = self.create_embedding(texts=data_texts)
 
         query_embeddings: list[float] = self.create_embedding(texts=query)[0]
 
-        hits = self.find_closest_n(query_embeddings, data_embeddings, n=3)
+        hits = self.find_closest_n(
+            query_vector=query_embeddings, embeddings=data_embeddings, n=3
+        )
         sem_search: list = []
         print(f'Search results for "{query}"')
         for hit in hits:
@@ -54,11 +60,12 @@ class SemanticSearch:
         return sem_search
 
 
+    # Class private method
     def _fetch_into_json(self) -> list[dict[str, Any]]:
-        """_summary_
+        """Transform a Dataframe into a list of dictionaries.
 
         Returns:
-            list[dict[str, Any]]: _description_
+            list[dict[str, Any]]: list of dictionaries or JSON objects.
         """
         json_data = self.dataframe.to_json(orient='records')
         data:list[dict[str, Any]] = json.loads(json_data)
@@ -67,13 +74,13 @@ class SemanticSearch:
 
     @staticmethod
     def create_data_texts(data_dict: dict[str, Any]) -> str:
-        """
+        """Generate data related texts.
 
         Args:
-            data_dict (dict[str, Any]): _description_
+            data_dict (dict[str, Any]): Data dictionary or JSON object.
 
         Returns:
-            str: _description_
+            str: Formatted string containing keywords for search.
         """
         (
             title,
@@ -89,13 +96,13 @@ class SemanticSearch:
 
 
     def create_embedding(self, texts: list | str)->list[Any]:
-        """_summary_
+        """Generate embedding from texts.
 
         Args:
-            texts (list | str): _description_
+            texts (list | str): A list of texts or a single text.
 
         Returns:
-            list[Any]: _description_
+            list[Any]: List of vectors embeddings corresponding to each text.
         """
         response = self.__client.embeddings.create(
             model="text-embedding-3-small"
@@ -107,15 +114,16 @@ class SemanticSearch:
 
     @staticmethod
     def find_closest_n(query_vector: list[float], embeddings: list[float], n:int)->list[dict[str, Any]]:
-        """_summary_
+        """Find top n responses using cosine distance to compare query vectors embeddings and
+        data embeddings.
 
         Args:
-            query_vector (list[float]): _description_
-            embeddings (list[float]): _description_
-            n (int): _description_
+            query_vector (list[float]): Query vector embeddings.
+            embeddings (list[float]): Data vector embeddings.
+            n (int): Number of top responses to return.
 
         Returns:
-            list[dict[str, Any]]: _description_
+            list[dict[str, Any]]: List of semantic search results.
         """
         distances: list[dict[str, Any]] = []
         for index, embedding in enumerate(embeddings):
