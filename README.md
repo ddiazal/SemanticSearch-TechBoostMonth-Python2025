@@ -21,6 +21,45 @@ Embeddings are `numerical representations of data`, particularly text, images, o
 * _Contextual Information_: The position of these points in the vector space reflects the semantic relationships and context of the data. 
 
 ## First steps
+
+### Windows
+Open Command Prompt or PowerShell, then follow these steps:
+
+1. Create and navigate to your project directory:
+
+```cmd
+mkdir project-semantic_search_w_embeddings
+cd project-semantic_search_w_embeddings
+```
+2. Clone the repository:
+
+```cmd
+git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
+```
+3. Navigate into the cloned repository:
+
+```cmd
+cd SemanticSearch-TechBoostMonth-Python2025
+```
+
+4. Create a Python virtual environment inside the repository directory:
+
+```cmd
+python -m venv .venv
+```
+5. Activate the virtual environment:
+
+```cmd
+.venv\Scripts\activate
+```
+6. Upgrade pip and install all required packages:
+
+```cmd
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### UNIX
 ```shell
 mkdir project-semantic_search_w_embeddings
 cd project-semantic_search_w_embeddings
@@ -43,6 +82,22 @@ Now, install all requirements so that you can run the scripts smoothly:
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+## Run the App
+Now that your environment is ready and activated, it's time to execute a few more lines to have the app running.
+Follow these steps in your PowerShell or terminal:
+
+1. Initialize the `uvicorn` engine in your root folder to run the API:
+```shell
+python3 -m main
+```
+2. Now, in a new terminal/PowerShell tab in the git cloned repo folder run your `Streamlit` app!
+```shell
+streamlit run stapp.py
+```
+3. When you're done hit `Ctrl+c` on Windows/Linux or `^+c` on macOS to shutdown the process.
+
+
 ## Semantic Search API
 
 ```shell
