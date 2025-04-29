@@ -60,24 +60,26 @@ pip install -r requirements.txt
 ```
 
 ### UNIX
+On UNIX system, open the Terminal, then follow these steps:
+1. Create and navigate to your project directory:
 ```shell
 mkdir project-semantic_search_w_embeddings
 cd project-semantic_search_w_embeddings
 ```
-Clone repository from a URL
+2. Clone repository from a URL
 ```shell
 git clone https://github.com/ddiazal/SemanticSearch-TechBoostMonth-Python2025.git
 ```
-Now, create a python virtual environment inside the repository directory:
+3. Now, create a python virtual environment inside the repository directory:
 ```shell
 cd SemanticSearch-TechBoostMonth-Python2025
 python3 -m venv .venv
 ```
-Activate your virtual environment
+4. Activate your virtual environment
  ```shell
 source .venv/bin/activate
 ```
-Now, install all requirements so that you can run the scripts smoothly:
+5. Then, install all requirements so that you can run the scripts smoothly:
 ```shell
 pip install --upgrade pip
 pip install -r requirements.txt
