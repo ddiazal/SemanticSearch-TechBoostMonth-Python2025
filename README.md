@@ -43,3 +43,10 @@ Now, install all requirements so that you can run the scripts smoothly:
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+## Semantic Search API
+
+```shell
+curl -X POST http://localhost:8000/semantic-response \
+    -H 'Content-Type:application/json' \
+    -d '{"query":"Skincare set"}'
+```
