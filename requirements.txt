@@ -4,3 +4,5 @@ scipy
 openai
 fastapi[standard]
 streamlit
+uvicorn
+pydantic
