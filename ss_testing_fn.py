@@ -20,7 +20,7 @@ data_texts: list[str] = [create_data_texts(data_dict=d) for d in data]
 # Generate data embeddings
 data_embeddings: list[float] = create_embedding(texts=data_texts)
 # Generate query embeddings
-query_embeddings: list[float] = create_embedding(texts=query2)[0]
+query_embeddings: list[float] = create_embedding(texts=query1)[0]
 
 # Get top n query responses
 hits = find_closest_n(
@@ -28,7 +28,7 @@ hits = find_closest_n(
 )
 
 sem_search: list = []
-print(f'Search results for "{query2}"')
+print(f'Search results for "{query1}"')
 # Iterate over query responses
 for hit in hits:
     product = data[hit["index"]]
